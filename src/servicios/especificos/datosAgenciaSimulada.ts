@@ -8,9 +8,10 @@ export const datosAgenciaSimuladaBack: AgenciaBackData = {
   tipografia_agencia: "Verdana",
   color_tipografia_agencia: "#212121",
   color_fondo_app: "#F3F3F3",
-  color_principal: "#6A0DAD",
-  color_secundario: "#CBAEF0",
-  color_terciario: "#3E0073",
+
+  color_principal: "#2E7D32", // verde oscuro
+  color_secundario: "#81C784", // verde claro
+  color_terciario: "#1B5E20", // verde muy oscuro
 
   header_imagen_background: "/fondo-playa.jpg",
   header_imagen_background_opacidad: 0.2,
@@ -19,19 +20,19 @@ export const datosAgenciaSimuladaBack: AgenciaBackData = {
 
   buscador_tipografia: "Verdana",
   buscador_tipografia_color: "#FFFFFF",
-  buscador_tipografia_color_label: "#6A0DAD",
+  buscador_tipografia_color_label: "#2E7D32",
   buscador_inputColor: "#212121",
   buscador_inputFondoColor: "#FFFFFF",
-  buscador_color_primario: "#6A0DAD",
-  buscador_color_secundario: "#CBAEF0",
+  buscador_color_primario: "#2E7D32",
+  buscador_color_secundario: "#81C784",
   buscador_color_terciario: "white",
 
   publicidad_existe: true,
   publicidad_titulo: "Ofertas imperdibles",
-  publicidad_tipografia_color: "#6A0DAD",
-  publicidad_color_primario: "#6A0DAD",
-  publicidad_color_secundario: "#CBAEF0",
-  publicidad_color_terciario: "#3E0073",
+  publicidad_tipografia_color: "#2E7D32",
+  publicidad_color_primario: "#2E7D32",
+  publicidad_color_secundario: "#81C784",
+  publicidad_color_terciario: "#1B5E20",
   publicidad_imagen_1: "paginaWeb/arboleda.jpg",
   publicidad_imagen_2: "paginaWeb/colombia.jpg",
   publicidad_imagen_3: "paginaWeb/rocas.jpg",
@@ -39,21 +40,21 @@ export const datosAgenciaSimuladaBack: AgenciaBackData = {
   tarjetas_titulo: "Destinos recomendados",
   tarjetas_tipografia: "Verdana",
   tarjetas_tipografia_color: "white",
-  tarjetas_tipografia_color_titulo: "#6A0DAD",
+  tarjetas_tipografia_color_titulo: "#2E7D32",
   tarjetas_tipografia_color_contenido: "#555555",
-  tarjetas_color_primario: "#6A0DAD",
-  tarjetas_color_secundario: "#D6B7ED",
-  tarjetas_color_terciario: "#3E0073",
+  tarjetas_color_primario: "#2E7D32",
+  tarjetas_color_secundario: "#A5D6A7", // reemplazo de lavanda
+  tarjetas_color_terciario: "#1B5E20",
 
   banner_registro_titulo: "Registrate y viajá con nosotros",
   banner_registro_tipografia_color: "#FFFFFF",
-  banner_registro_color_primario: "#6A0DAD",
-  banner_registro_color_secundario: "#CBAEF0",
-  banner_registro_color_terciario: "#3E0073",
+  banner_registro_color_primario: "#2E7D32",
+  banner_registro_color_secundario: "#81C784",
+  banner_registro_color_terciario: "#1B5E20",
 
-  quienes_somos_es: "Somos expertos en viajes por América del Sur.",
-  quienes_somos_en: "We are travel experts in South America.",
-  quienes_somos_pt: "Somos especialistas em viagens pela América do Sul.",
+  quienes_somos_es: "Somos expertos en llevarte a donde vos quieras.",
+  quienes_somos_en: "We are experts in taking you wherever you want",
+  quienes_somos_pt: "Somos especialistas em levá-lo para onde você quiser",
 
   footer_texto: "© 2025 Alohados - Todos los derechos reservados",
   footer_tipografia: "Verdana",
@@ -67,7 +68,7 @@ export const datosAgenciaSimuladaBack: AgenciaBackData = {
   footer_direccion: "direccion",
   footer_ciudad: "Mendoza",
   footer_pais: "Argentina",
-  footer_color_primario: "#6A0DAD",
-  footer_color_secundario: "#CBAEF0",
-  footer_color_terciario: "#2E005A",
+  footer_color_primario: "#2E7D32",
+  footer_color_secundario: "#81C784",
+  footer_color_terciario: "#004D40" // reemplazo de púrpura muy oscuro
 };
