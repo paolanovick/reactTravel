@@ -64,7 +64,7 @@ export const datosAgenciaSimuladaBack: AgenciaBackData = {
   footer_instagram: "x",
   footer_whatsapp: "https://wa.me/5491123456789",
   footer_telefono: "+54 9 11 2345-6789",
-  footer_email: "info@alojados.com",
+  footer_email: "info@alohados.com",
   footer_direccion: "direccion",
   footer_ciudad: "Mendoza",
   footer_pais: "Argentina",
