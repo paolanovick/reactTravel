@@ -32,7 +32,7 @@ const Header: React.FC = () => {
         backgroundColor:
           videoBackground || imagenBackground ? "transparent" : "#000",
         boxShadow: "none",
-        height: { xs: "100vh", sm: "75vh", md: "65vh" },
+        height:  "100vh",
         width: "100vw",
         top: 0,
         left: 0,
@@ -109,6 +109,7 @@ const Header: React.FC = () => {
           display: "flex",
           alignItems: "flex-start",
           justifyContent: "flex-start",
+           flexDirection: "column",
           width: "100%",
           height: "100%",
           px: { xs: 2, sm: 4, md: 6 },
