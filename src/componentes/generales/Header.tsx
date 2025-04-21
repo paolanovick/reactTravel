@@ -45,25 +45,30 @@ const Header: React.FC = () => {
       }}
     >
       {videoBackground ? (
-        <Box
-          component="video"
-          ref={videoRef}
-          key={videoBackground}
-          src={videoBackground}
-          autoPlay
-          loop
-          muted
-          playsInline
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: 0,
-          }}
-        />
+       <Box
+  component="video"
+  ref={videoRef}
+  key={videoBackground}
+  src={videoBackground}
+  autoPlay
+  loop
+  muted
+  playsInline
+  sx={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center",
+    zIndex: 0,
+    '@media (max-width: 600px)': {
+      objectPosition: "center top",
+    },
+  }}
+/>
+
       ) : (
         imagenBackground && (
           <Box
