@@ -62,9 +62,6 @@ const Header: React.FC = () => {
             height: "100%",
             objectFit: "cover",
             zIndex: 0,
-             '@media (max-width: 600px)': {
-      objectPosition: "center top", // Ajuste opcional para mejor encuadre en móviles
-    },
           }}
         />
       ) : (
@@ -84,9 +81,6 @@ const Header: React.FC = () => {
               height: "100%",
               objectFit: "cover",
               zIndex: 0,
-                '@media (max-width: 600px)': {
-      objectPosition: "center top", // Ajuste opcional para mejor encuadre en móviles
-    },
             }}
           />
         )
