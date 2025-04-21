@@ -91,25 +91,25 @@ const PublicidadCliente: React.FC = () => {
       </Typography>
 
       {/* 🔥 CARRUSEL */}
-      <Box sx={{ position: "relative", zIndex: 1 }}>
-        <Slider {...settings} aria-label="Carrusel de imágenes publicitarias">
-          {imagenes.map((imagen, index) => (
-            <Box key={index} sx={{ display: "flex", justifyContent: "center" }}>
-              <img
-                src={imagen}
-                alt={`Publicidad ${index + 1}`}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  maxHeight: isMobile ? "300px" : "500px",
-                  objectFit: "cover",
-                  borderRadius: "15px",
-                }}
-              />
-            </Box>
-          ))}
-        </Slider>
+         <Box sx={{ position: "relative", zIndex: 1 }}>
+  <Slider {...settings} aria-label="Carrusel de imágenes publicitarias">
+    {imagenes.map((imagen, index) => (
+      <Box key={index} sx={{ display: "flex", justifyContent: "center" }}>
+        <Box
+          component="img"
+          src={imagen}
+          alt={`Publicidad ${index + 1}`}
+          sx={{
+            width: "100%",
+            height: { xs: "250px", sm: "400px" }, // responsive
+            objectFit: "cover",
+            borderRadius: "15px",
+          }}
+        />
       </Box>
+    ))}
+  </Slider>
+</Box>
 
       {/* 🔥 ESTILOS SLICK PERSONALIZADOS */}
       <style>
