@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -13,23 +13,13 @@ const Header: React.FC = () => {
   const videoBackground = header?.videoBackground || null;
   const imagenBackground = header?.imagenBackground || null;
 
-  // Estado para detectar si estamos en móvil
-  const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 600);
-    handleResize(); // Chequeo inicial
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (!isMobile && videoRef.current && videoBackground) {
+    if (videoRef.current && videoBackground) {
       videoRef.current.play().catch((error) =>
         console.error("Error al reproducir el video:", error)
       );
     }
-  }, [videoBackground, isMobile]);
+  }, [videoBackground]);
 
   const opacidad = header?.imagenBackgroundOpacidad ?? 1;
   const opacidadNormalizada =
@@ -54,7 +44,7 @@ const Header: React.FC = () => {
         justifyContent: "flex-start",
       }}
     >
-      {!isMobile && videoBackground ? (
+      {videoBackground ? (
         <Box
           component="video"
           ref={videoRef}
@@ -64,28 +54,6 @@ const Header: React.FC = () => {
           loop
           muted
           playsInline
-           sx={{
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    objectPosition: "center", // Aplica por defecto para todos
-    zIndex: 0,
-    '@media (max-width: 600px)': {
-      objectPosition: "center top", // Para que el encuadre se vea bien en móviles
-    },
-  }}
-        />
-      ) : imagenBackground && (
-        <Box
-          component="img"
-          src={imagenBackground}
-          alt="Fondo"
-          onError={(e) =>
-            (e.currentTarget.style.display = "none")
-          }
           sx={{
             position: "absolute",
             top: 0,
@@ -93,10 +61,35 @@ const Header: React.FC = () => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center top",
             zIndex: 0,
+             '@media (max-width: 600px)': {
+      objectPosition: "center top", // Ajuste opcional para mejor encuadre en móviles
+    },
           }}
         />
+      ) : (
+        imagenBackground && (
+          <Box
+            component="img"
+            src={imagenBackground}
+            alt="Fondo"
+            onError={(e) =>
+              (e.currentTarget.style.display = "none")
+            }
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              zIndex: 0,
+                '@media (max-width: 600px)': {
+      objectPosition: "center top", // Ajuste opcional para mejor encuadre en móviles
+    },
+            }}
+          />
+        )
       )}
 
       <Box
@@ -111,58 +104,58 @@ const Header: React.FC = () => {
         }}
       />
 
-     <Toolbar
-  disableGutters
-  sx={{
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "center", // centrado horizontal general
-    width: "100%",
-    height: "100%",
-    px: { xs: 2, sm: 4, md: 6 },
-    pt: { xs: 0, sm: 1, md: 1 },
-    position: "relative",
-    zIndex: 2,
-  }}
->
-  <Box
-    sx={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-start",
-      alignItems: "center",
-      width: "100%",
-    }}
-  >
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1 }}
-      whileHover={{ scale: 1.25 }}
-    >
-      {datosGenerales?.logoAgencia && (
+      <Toolbar
+        disableGutters
+        sx={{
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "flex-start",
+          width: "100%",
+          height: "100%",
+          px: { xs: 2, sm: 4, md: 6 },
+          pt: { xs: 0, sm: 1, md: 1 },
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
         <Box
-          component="img"
-          src={datosGenerales.logoAgencia}
-          alt="Logo Agencia"
-          onClick={() => navigate("/")}
-          onError={(e) =>
-            (e.currentTarget.style.display = "none")
-          }
           sx={{
-            height: { xs: 120, sm: 170, md: 200, lg: 240 }, // más amigable en móviles
-            width: "auto",
-            maxWidth: "90vw",
-            cursor: "pointer",
-            transition: "transform 0.3s ease-in-out",
-            mt: { xs: 6, sm: 3, md: 4 }, // más espacio en móviles
+            display: "flex",
+            justifyContent: {
+              xs: "center",
+              sm: "flex-start",
+            },
+            width: "100%",
           }}
-        />
-      )}
-    </motion.div>
-  </Box>
-</Toolbar>
-
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            whileHover={{ scale: 1.25 }}
+          >
+            {datosGenerales?.logoAgencia && (
+              <Box
+                component="img"
+                src={datosGenerales.logoAgencia}
+                alt="Logo Agencia"
+                onClick={() => navigate("/")}
+                onError={(e) =>
+                  (e.currentTarget.style.display = "none")
+                }
+                sx={{
+                  height: { xs: 170, sm: 200, md: 250, lg: 300 },
+                  width: "auto",
+                  maxWidth: "90vw",
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease-in-out",
+                  mt: { xs: 2, sm: 3, md: 4 },
+                }}
+              />
+            )}
+          </motion.div>
+        </Box>
+      </Toolbar>
     </AppBar>
   );
 };
