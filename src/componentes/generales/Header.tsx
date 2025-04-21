@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -13,13 +13,23 @@ const Header: React.FC = () => {
   const videoBackground = header?.videoBackground || null;
   const imagenBackground = header?.imagenBackground || null;
 
+  // Estado para detectar si estamos en móvil
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    if (videoRef.current && videoBackground) {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    handleResize(); // Chequeo inicial
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile && videoRef.current && videoBackground) {
       videoRef.current.play().catch((error) =>
         console.error("Error al reproducir el video:", error)
       );
     }
-  }, [videoBackground]);
+  }, [videoBackground, isMobile]);
 
   const opacidad = header?.imagenBackgroundOpacidad ?? 1;
   const opacidadNormalizada =
@@ -44,7 +54,7 @@ const Header: React.FC = () => {
         justifyContent: "flex-start",
       }}
     >
-      {videoBackground ? (
+      {!isMobile && videoBackground ? (
         <Box
           component="video"
           ref={videoRef}
@@ -61,35 +71,29 @@ const Header: React.FC = () => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
+            objectPosition: "center",
             zIndex: 0,
-             '@media (max-width: 600px)': {
-      objectPosition: "center top", // Ajuste opcional para mejor encuadre en móviles
-    },
           }}
         />
-      ) : (
-        imagenBackground && (
-          <Box
-            component="img"
-            src={imagenBackground}
-            alt="Fondo"
-            onError={(e) =>
-              (e.currentTarget.style.display = "none")
-            }
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              zIndex: 0,
-                '@media (max-width: 600px)': {
-      objectPosition: "center top", // Ajuste opcional para mejor encuadre en móviles
-    },
-            }}
-          />
-        )
+      ) : imagenBackground && (
+        <Box
+          component="img"
+          src={imagenBackground}
+          alt="Fondo"
+          onError={(e) =>
+            (e.currentTarget.style.display = "none")
+          }
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center top",
+            zIndex: 0,
+          }}
+        />
       )}
 
       <Box
