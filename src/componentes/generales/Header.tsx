@@ -108,58 +108,58 @@ const Header: React.FC = () => {
         }}
       />
 
-      <Toolbar
-        disableGutters
-        sx={{
-          display: "flex",
-          alignItems: "flex-start",
-          justifyContent: "flex-start",
-          width: "100%",
-          height: "100%",
-          px: { xs: 2, sm: 4, md: 6 },
-          pt: { xs: 0, sm: 1, md: 1 },
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
+     <Toolbar
+  disableGutters
+  sx={{
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "center", // centrado horizontal general
+    width: "100%",
+    height: "100%",
+    px: { xs: 2, sm: 4, md: 6 },
+    pt: { xs: 0, sm: 1, md: 1 },
+    position: "relative",
+    zIndex: 2,
+  }}
+>
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      width: "100%",
+    }}
+  >
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
+      whileHover={{ scale: 1.25 }}
+    >
+      {datosGenerales?.logoAgencia && (
         <Box
+          component="img"
+          src={datosGenerales.logoAgencia}
+          alt="Logo Agencia"
+          onClick={() => navigate("/")}
+          onError={(e) =>
+            (e.currentTarget.style.display = "none")
+          }
           sx={{
-            display: "flex",
-            justifyContent: {
-              xs: "center",
-              sm: "flex-start",
-            },
-            width: "100%",
+            height: { xs: 120, sm: 170, md: 200, lg: 240 }, // más amigable en móviles
+            width: "auto",
+            maxWidth: "90vw",
+            cursor: "pointer",
+            transition: "transform 0.3s ease-in-out",
+            mt: { xs: 6, sm: 3, md: 4 }, // más espacio en móviles
           }}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            whileHover={{ scale: 1.25 }}
-          >
-            {datosGenerales?.logoAgencia && (
-              <Box
-                component="img"
-                src={datosGenerales.logoAgencia}
-                alt="Logo Agencia"
-                onClick={() => navigate("/")}
-                onError={(e) =>
-                  (e.currentTarget.style.display = "none")
-                }
-                sx={{
-                  height: { xs: 170, sm: 200, md: 250, lg: 300 },
-                  width: "auto",
-                  maxWidth: "90vw",
-                  cursor: "pointer",
-                  transition: "transform 0.3s ease-in-out",
-                  mt: { xs: 2, sm: 3, md: 4 },
-                }}
-              />
-            )}
-          </motion.div>
-        </Box>
-      </Toolbar>
+        />
+      )}
+    </motion.div>
+  </Box>
+</Toolbar>
+
     </AppBar>
   );
 };
