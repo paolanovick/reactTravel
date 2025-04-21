@@ -64,16 +64,19 @@ const Header: React.FC = () => {
           loop
           muted
           playsInline
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-            zIndex: 0,
-          }}
+           sx={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center", // Aplica por defecto para todos
+    zIndex: 0,
+    '@media (max-width: 600px)': {
+      objectPosition: "center top", // Para que el encuadre se vea bien en móviles
+    },
+  }}
         />
       ) : imagenBackground && (
         <Box
